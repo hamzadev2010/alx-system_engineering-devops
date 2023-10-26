@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# display details of etc passwd
+
+print="/etc/passwd"
+while IFS=: read -r t1 t2 t3 t4 t5 t6 t7
+do
+    echo "The user $t1 is part of the $t4 gang, lives in $t6 and rides $t7. $t3's place is protected by the passcode $t2, more info about the user here: $t5"
+done < "$print"
