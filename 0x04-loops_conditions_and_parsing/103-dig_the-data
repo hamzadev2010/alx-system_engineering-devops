@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 # a script to show ip of each user and frequence of the user
-awk '{print $1,$9}' apache-access.log | sort | uniq -c | sort -nr
+thefile="appache-access.log"
+awk -F '{print $1,$9}' $thefile | sort | uniq -c | sort -nr
