@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# print username and id and directory
+
+print="/etc/passwd"
+while IFS= read -r line
+do
+    echo "$line" | cut -d':' --fields=1,3,6
+done < "$print"
