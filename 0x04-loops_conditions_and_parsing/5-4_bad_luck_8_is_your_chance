@@ -1,11 +1,16 @@
 #!/usr/bin/env bash
-# print best school 10 time
-for i in {1..10}; do
-    if [ $i -eq 4 ]; then
-        echo "bad luck"
-    elif [ $i -eq 8 ]; then
-        echo "good luck"
-    else
-        echo "Best School"
-    fi
+# a loop from 1 o 9
+i=0
+while [ $i -le 9 ]
+do
+if [ $i -eq 3 ]
+then
+echo "bad luck"
+elif [ $i -eq 7 ]
+then
+echo "good luck"
+else
+echo "Best School"
+fi
+((i++))
 done
