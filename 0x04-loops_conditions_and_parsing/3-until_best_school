@@ -1,8 +1,4 @@
 #!/usr/bin/env bash
-sh: 1: :wq: not found
-COUNTER=10
-until [ $COUNTER -lt 1 ]
-do
-    echo "Best School"
-    let COUNTER-=1
+#print best shcool 10 time
+i=1; until [ $i -ge 11 ]; do echo "Best School"; ((i++));
 done
