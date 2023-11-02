@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# algo of script that establishes a listening service on port 98
+
+nc -l localhost 98
