@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+#The root user is a superuser that can do anything on a Unix machine
+chown nginx:nginx /etc/nginx/nginx.conf
+sed -i "s/80/8080/g" /etc/nginx/sites-available/default
+chmod 777 /etc/nginx/nginx.conf
+pkill apache2
+sudo -u nginx service nginx start
