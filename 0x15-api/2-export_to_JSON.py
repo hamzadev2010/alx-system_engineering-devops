@@ -19,12 +19,12 @@ def fetch_data(id):
     todos = rq.json()
     task_list = []
     for todo in todos:
-        task = {
+        tsk = {
             "task": todo["title"],
             "completed": todo["completed"],
-            "username": user["username"],
+            "username": usr["username"],
         }
-        task_list.append(task)
+        task_list.append(tsk)
 
     data = {str(usr["id"]): task_list}
     filename = "{}.json".format(usr["id"])
