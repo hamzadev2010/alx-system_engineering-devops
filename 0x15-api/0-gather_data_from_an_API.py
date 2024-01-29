@@ -17,10 +17,13 @@ if __name__ == "__main__":
             .format(usrid)).json()
 
     completed = []
+
     for task in todo:
         if task.get('completed') is True:
             completed.append(task.get('title'))
     print("Employee {} is done with tasks({}/{}):".
-          format(rq.get('name'), len(completed), len(todo)))
+
+          format(rq.get('name'), len(completed), len(todo))ii)
+
     for task in completed:
         print("\t {}".format(task))
