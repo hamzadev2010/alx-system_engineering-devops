@@ -2,10 +2,10 @@
 """Using what you did in the task #0,
 extend your Python script to export data in the CSV format
 """
-import requests
-import csv
-from sys import argv
 
+import csv
+import requests
+import sys
 
 
 def fetch_data(id):
@@ -26,4 +26,4 @@ def fetch_data(id):
 
 
 if __name__ == "__main__":
-    fetch_data(argv[1])
+    fetch_data(sys.argv[1])
