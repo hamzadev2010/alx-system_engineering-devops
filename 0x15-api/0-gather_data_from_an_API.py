@@ -9,7 +9,6 @@ from sys import argv
 
 if __name__ == "__main__":
     usrid = argv[1]
-
     rq = requests.get('https://jsonplaceholder.typicode.com/users/{}'
                         .format(usrid)).json()
 
