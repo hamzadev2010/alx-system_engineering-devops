@@ -7,7 +7,6 @@ import requests
 from sys import argv
 
 if __name__ == "__main__":
-
     usrs = requests.get("https://jsonplaceholder.typicode.com/users")
     usrs = usr.json()
     todos = requests.get('https://jsonplaceholder.typicode.com/todos')
