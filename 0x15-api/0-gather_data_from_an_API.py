@@ -7,23 +7,18 @@ import requests
 import argv
 
 
-def fetch_data(id):
-    rq = requests.get("https://jsonplaceholder.typicode.com/users/{}"
-                       .format(id))
-    usr = rq.json()
-    inf = "Employee {} is done with tasks".format(usr["name"])
-
-    rq = requests.get("https://jsonplaceholder.typicode.com/users/{}/todos"
-                       .format(id))
-    tds = rq.json()
-    inf += "({}/{}):".format(
-                        sum(1 for todo in tds if todo["completed"]),
-                        len(tds))
-    for todo in tds:
-        if todo["completed"]:
-            inf += "\n\t {}".format(todo["title"])
-    print(inf)
-
-
 if __name__ == "__main__":
-    fetch_data(sys.argv[1])
+    usrid = sys.argv[1]
+    rq = requests.get('https://jsonplaceholder.typicode.com/users/{}'
+                        .format(usrid)).json()
+
+    todo = requests.get('https://jsonplaceholder.typicode.com/todos?userId={}'
+                        .format(usrid)).json()
+    cmpp = []
+    for task in todo:
+        if task.get('completed') is True:
+            cmpp.append(task.get('title'))
+    print("Employee {} is done with tasks({}/{}):".
+          format(rq.get('name'), len(cmpp), len(todo)))
+    for task in cmpp:
+        print("\t {}".format(task))
