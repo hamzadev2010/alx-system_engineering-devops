@@ -4,9 +4,10 @@
 extend your Python script to export data in the JSON format
 """
 
-import requests
-import sys
 import json
+import sys
+import requests
+
 
 if __name__ == "__main__":
     res = requests.get('https://jsonplaceholder.typicode.com/todos/')
