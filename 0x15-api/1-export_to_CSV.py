@@ -9,10 +9,12 @@ import sys
 
 
 def fetch_data(id):
-    rq = requests.get("https://jsonplaceholder.typicode.com/users/{}".format(id))
+    rq = requests.get("https://jsonplaceholder.typicode.com/users/{}"
+    .format(id))
     usr = rq.json()
 
-    rq = requests.get("https://jsonplaceholder.typicode.com/users/{}/todos".format(id))
+    rq = requests.get("https://jsonplaceholder.typicode.com/users/{}/todos"
+    .format(id))
     todos = rq.json()
 
     filename = "{}.csv".format(usr["id"])
