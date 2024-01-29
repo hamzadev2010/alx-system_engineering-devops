@@ -10,7 +10,7 @@ import argv
 def fetch_data(id):
     rq = requests.get("https://jsonplaceholder.typicode.com/users/{}"
                        .format(id))
-    usr = req.json()
+    usr = rq.json()
     inf = "Employee {} is done with tasks".format(usr["name"])
 
     rq = requests.get("https://jsonplaceholder.typicode.com/users/{}/todos"
