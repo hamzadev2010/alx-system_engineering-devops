@@ -17,7 +17,6 @@ if __name__ == "__main__":
             .format(usrid)).json()
 
     completed = []
-
     for task in todo:
         if task.get('completed') is True:
             completed.append(task.get('title'))
