@@ -1,34 +1,30 @@
 #!/usr/bin/python3
-"""Using what you did in the task #0,
+""" Using what you did in the task #0,
 extend your Python script to export data in the JSON format."""
-
+import csv
 import json
-import requests
-
-def save_dt():
-    data = {}
-    for id in range(1, 11):
-        rq = requests.get("https://jsonplaceholder.typicode.com/users/{}"
-                           .format(id))
-        usr = rq.json()
-        req = requests.get(
-            "https://jsonplaceholder.typicode.com/users/{}/todos".format(id)
-        )
-        todos = rq.json()
-        task_list = []
-        for todo in todos:
-            task = {
-                "username": usr["username"],
-                "task": todo["title"],
-                "completed": todo["completed"],
-            }
-            task_list.append(task)
-        data[str(usr["id"])] = task_list
-
-    filename = "todo_all_employees.json"
-    with open(filename, "w") as file:
-        json.dump(data, file)
+from requests import get
+import sys
 
 
-if __name__ == "__main__":
-    save_dt()
+if __name__ == '__main__':
+    usrs = get('https://jsonplaceholder.typicode.com/users').json()
+
+    todo = get('https://jsonplaceholder.typicode.com/todos/').json()
+
+    id_dict = {}
+    username_dict = {}
+
+    for user in usrs:
+        empl_id = user.get("id")
+        id_dict[emp_id] = []
+        username_dict[empl_id] = user.get('username')
+    for task in todo:
+        dictt = {}
+        empl_id = task.get('userId')
+        dictt["task"] = task.get('title')
+        dictt["completed"] = task.get('completed')
+        dictt["username"] = username_dict.get(empl_id)
+        id_dict.get(empl_id).append(dictt)
+    with open("todo_all_employees.json", 'w') as ajsonfile:
+        json.dump(id_dict, ajsonfile)
