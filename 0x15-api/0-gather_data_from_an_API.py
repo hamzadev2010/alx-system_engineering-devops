@@ -22,8 +22,6 @@ if __name__ == "__main__":
         if task.get('completed') is True:
             completed.append(task.get('title'))
     print("Employee {} is done with tasks({}/{}):".
-
-          format(rq.get('name'), len(completed), len(todo))ii)
-
+            format(rq.get('name'), len(completed), len(todo))ii)
     for task in completed:
         print("\t {}".format(task))
