@@ -9,34 +9,28 @@ import sys
 import requests
 
 
+def fetch_data(id):
+    rq = requests.get("https://jsonplaceholder.typicode.com/users/{}"
+                       .format(id))
+    usr = rq.json()
+
+    rq = requests.get("https://jsonplaceholder.typicode.com/users/{}/todos"
+                       .format(id))
+    todos = rq.json()
+    task_list = []
+    for todo in todos:
+        task = {
+            "task": todo["title"],
+            "completed": todo["completed"],
+            "username": user["username"],
+        }
+        task_list.append(task)
+
+    data = {str(usr["id"]): task_list}
+    filename = "{}.json".format(usr["id"])
+    with open(filename, "w") as file:
+        json.dump(data, file)
+
+
 if __name__ == "__main__":
-    res = requests.get('https://jsonplaceholder.typicode.com/todos/')
-    dt = res.json()
-
-    row = []
-    res2 = requests.get('https://jsonplaceholder.typicode.com/users')
-    dt2 = res2.json()
-
-    for i in dt2:
-        if i['id'] == int(sys.argv[1]):
-            u_name = i['username']
-            id_no = i['id']
-
-    row = []
-
-    for i in dt:
-
-        new_dict = {}
-
-        if i['userId'] == int(sys.argv[1]):
-            new_dict['username'] = u_name
-            new_dict['task'] = i['title']
-            new_dict['completed'] = i['completed']
-            row.append(new_dict)
-
-    final_dict = {}
-    final_dict[id_no] = row
-    json_obj = json.dumps(final_dict)
-
-    with open(argv[1] + ".json",  "w") as f:
-        f.write(json_obj)
+    fetch_data(sys.argv[1])
