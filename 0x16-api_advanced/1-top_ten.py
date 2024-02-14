@@ -3,6 +3,7 @@
 hot posts listed for a given subreddit.
 
 """
+
 import requests
 
 
@@ -11,7 +12,8 @@ def top_ten(subreddit):
     and prints the titles of the first 10 hot posts
     listed for a given subreddit."""
     try:
-        weburl = "https://www.reddit.com/r/{}/hot.json?limit=10".format(subreddit)
+        weburl = "https://www.reddit.com/r/{}/hot.json?limit=10"
+        .format(subreddit)
         headers = {
             "User-Agent": "Google chrome client",
         }
